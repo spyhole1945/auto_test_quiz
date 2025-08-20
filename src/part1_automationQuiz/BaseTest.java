@@ -30,6 +30,15 @@ public class BaseTest {
         /*String ChromeDriverPath= Page.getPropertie("config/configration.properties","ChromeDriverPath");
         System.setProperty("webdriver.chrome.driver",ChromeDriverPath);*/
 
+<<<<<<< HEAD
+        BrowserType.setupChromeBrowser();
+        driver = new ChromeDriver();
+
+
+        // 初始化 EdgeDriver
+       /* BrowserType.setupEdgeBrowser();
+        driver = new EdgeDriver();*/
+=======
     /*    BrowserType.setupChromeBrowser();
         driver = new ChromeDriver();*/
 
@@ -37,6 +46,7 @@ public class BaseTest {
         // 初始化 EdgeDriver
         BrowserType.setupEdgeBrowser();
         driver = new EdgeDriver();
+>>>>>>> origin/main
 
 
 
