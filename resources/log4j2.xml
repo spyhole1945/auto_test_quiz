@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug" strict="true"
+			   name="XMLConfigTest" packages="org.apache.logging.log4j.test">
+
+	<appenders>
+		<Console name="STDOUT" target="SYSTEM_OUT">
+			<ThresholdFilter level="INFO" onMatch="ACCEPT"
+							 onMismatch="DENY" />
+			<PatternLayout
+					pattern="%d{HH:mm:ss.SSS} [%X{req_id}] [%t] %-5level - %msg - [%logger{36}:%M:%L] %n" />
+		</Console>
+		<!-- main file -->
+		<!-- fileName="logs/service.log"-->
+		<RollingRandomAccessFile name="RoFile"
+								 fileName="result/text/getInfo.log"
+								 filePattern="logs/$${date:yyyy-MM-dd}/service-%d{yyyy-MM-dd-HH}-%i.log.gz">
+			<ThresholdFilter level="INFO" onMatch="ACCEPT"
+							 onMismatch="DENY" />
+			<PatternLayout
+				pattern="%d{yyyy.MM.dd HH:mm:ss} %msg %n" />
+			<!--pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} [%X{req_id}] [%t] %-5level - %msg - [%logger{36}:%M:%L] %n" />-->
+			<!--pattern="%d{UNIX_MILLIS} %msg %n" />-->
+
+			<Policies>
+				<TimeBasedTriggeringPolicy  interval="24" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="256 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="100" />
+		</RollingRandomAccessFile>
+		<RollingRandomAccessFile name="RoWarnFile"
+								 fileName="result/text/warn.log"
+								 filePattern="logs/$${date:yyyy-MM-dd}/warn-%d{yyyy-MM-dd-HH}-%i.log.gz">
+			<ThresholdFilter level="WARN" onMatch="ACCEPT"
+							 onMismatch="DENY" />
+			<PatternLayout
+					pattern=" %msg %n" />
+			<!--pattern=" %msg %n" />-->
+			<!--pattern="%d{UNIX_MILLIS} %msg %n" />-->
+			<!--pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} [%X{req_id}] [%t] %-5level - %msg - [%logger{36}:%M:%L] %n" />-->
+
+			<Policies>
+				<TimeBasedTriggeringPolicy  interval="24" modulate="true"/>
+				<SizeBasedTriggeringPolicy size="256 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="100" />
+		</RollingRandomAccessFile>
+		<!-- error file -->
+		<RollingRandomAccessFile name="RoErrorFile"
+								 fileName="logs/error.log"
+								 filePattern="logs/$${date:yyyy-MM-dd}/error-%d{yyyy-MM-dd}-%i.log.gz">
+			<ThresholdFilter level="ERROR" onMatch="ACCEPT"
+							 onMismatch="DENY" />
+			<PatternLayout
+					pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} [%X{req_id}] [%t] %-5level - %msg - [%logger{36}:%M:%L] %n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="256 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="100" />
+		</RollingRandomAccessFile>
+		<!-- app file -->
+		<RollingRandomAccessFile name="AppLogFile"
+								 fileName="logs/app.log"
+								 filePattern="logs/$${date:yyyy-MM-dd}/app-%d{yyyy-MM-dd-HH}-%i.log.gz">
+			<ThresholdFilter level="DEBUG" onMatch="ACCEPT"
+							 onMismatch="DENY" />
+			<PatternLayout
+					pattern="%d{yyyy.MM.dd HH:mm:ss.SSS} [%X{req_id}] [%t] %-5level - %msg - [%logger{36}:%M:%L] %n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="256 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="100" />
+		</RollingRandomAccessFile>
+		<Appender type="RollingFile" name="TraceLogFile"
+				  fileName="fightcitylogs/trace.log"
+				  filePattern="fightcitylogs/bk/trace-%d{MM-dd-yyyy}.log.gz"
+				  ignoreExceptions="false">
+			<PatternLayout>
+				<Pattern>%m%n</Pattern>
+			</PatternLayout>
+			<TimeBasedTriggeringPolicy />
+		</Appender>
+	</appenders>
+	<loggers>
+		<root level="INFO">
+			<appender-ref ref="RoFile" />
+			<appender-ref ref="STDOUT" level="INFO"/>
+			<appender-ref ref="RoErrorFile" />
+			<appender-ref ref="RoWarnFile" />
+		</root>
+		<AsyncLogger name="org" level="WARN" additivity="true"
+					 includeLocation="true">
+			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="RoFile" />
+		</AsyncLogger>
+	</loggers>
+</Configuration>

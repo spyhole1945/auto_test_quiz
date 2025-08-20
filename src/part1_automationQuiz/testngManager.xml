@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="framework_testng">
+
+    <test name="test2">
+        <classes>
+            <class name="part1_automationQuiz.Case1_TestLogin">
+                <methods>
+                    <include name="testLogin1"></include>
+                    <include name="testLogin2"></include>
+                    <include name="testLogin3"></include>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+
+</suite>

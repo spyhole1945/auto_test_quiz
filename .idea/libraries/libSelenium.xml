@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="libSelenium">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/libselenium" />
+      <root url="jar://$PROJECT_DIR$/libselenium/selenium-api-4.35.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libselenium/selenium-remote-driver-4.35.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/libselenium" />
+      <root url="jar://$PROJECT_DIR$/libselenium/selenium-api-4.35.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/libselenium/selenium-remote-driver-4.35.0-sources.jar!/" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/libSelenium" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/libSelenium" recursive="false" type="SOURCES" />
+  </library>
+</component>

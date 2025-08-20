@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="framework_testng">
+
+    <test name="test">
+        <classes>
+            <class name="part2_cucumberQuiz.TestRunner">
+            </class>
+        </classes>
+    </test>
+
+
+    <listeners>
+     <!--   <listener class-name="com.enmoli.uitest.base.listener.RetryListener"></listener>-->
+        <listener class-name="listener.TestngListener"></listener>
+        <listener class-name="listener.RetryListener"></listener>
+    </listeners>
+</suite>
